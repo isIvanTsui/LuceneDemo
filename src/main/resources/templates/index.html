@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+</head>
+<script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+<body>
+<div >
+    <input type="text" placeholder="请输入搜索关键字" id="keyword">
+    <input type="button" value="搜索" id="search">
+</div>
+<div id="div1">
+</div>
+</div>
+<script>
+    $("#search").click(function (a) {
+        var keyword = $("#keyword").val();
+        $.post("search", { "keyword": keyword },
+            function(result){
+                $("#div1").children().remove()
+                result.forEach(element => {
+                    var addHtml = '<div style="float: left;border: 1px solid red;margin-left: 20px;margin-top: 20px;" id="div2">'
+                        + '<div>'+ "标题：" + element.cprTitle +'</div>' + '</br>'
+                        + '<div>'+ "内容：" + element.cprContent +'</div>' + '</br>'
+                        + '<div>'+ "最佳摘要：" + element.bestFragment +'</div>' + '</br>'
+                        + '<div>'+ "得分：" + element.score +'</div>'
+                        + '</div>';
+                    $("#div1").append(addHtml);
+                })
+            });
+    })
+</script>
+</body>
+</html>

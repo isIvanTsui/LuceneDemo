@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.medicom.search.mapper.CprMainMapper">
+
+    <select id="listCpr" resultType="com.medicom.search.vo.CprVo">
+        SELECT
+            a.cprid,
+            a.genid,
+            a.drug_nameid,
+            a.cpr_title,
+            a.first_code,
+            a.is_warndrug,
+            a.sortcode,
+            a.launch_date,
+            a.cpr_edit_time,
+            a.cpr_update_time,
+            a.search_name,
+            b.cpr_phname,
+            b.cpr_seqnum,
+            b.cpr_seqnum2,
+            b.cpr_content
+        FROM
+            cpr_main a
+                JOIN cpr_content b ON a.cprid = b.cprid
+    </select>
+</mapper>
