@@ -1,20 +1,30 @@
-lucene:
-  dbpath: d:\Users\cuiyingfan\Desktop\Medicom\MCDEX\mcdex_raw.db
-  indexpath: d:\Users\cuiyingfan\Desktop\Medicom\MCDEX\index
+sqlite:
+  dbpath: src\main\resources\mcdex_raw.db
+  indexpath: src\main\resources\index
+  key: 123456
+pip:
+  datasource:
+    url: jdbc:sqlserver://172.18.7.125:1433;database=PASSPA2DB
+    driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: ENC(AXbT/g3snP/heOv40u/d+nkZMO9Y9GZOKcpY4Opx0/GKiuzvsndvbOx7BJHWnv6jGkco0VZeP87oOopuWoc9TQ==)
+    password: medic0m
+
+
 spring:
   datasource:
-    url: jdbc:p6spy:sqlite:${lucene.dbpath}
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-    username:
-    password:
-  thymeleaf:
-    prefix: classpath:/templates/
-    mode: HTML
-    cache: false
-    encoding: UTF-8
-    servlet:
-      content-type: text/html
-
+    dynamic:
+      datasource:
+        # 主库数据源
+        master:
+          url: ${pip.datasource.url}
+          driver-class-name: ${pip.datasource.driver}
+          username: ${pip.datasource.username}
+          password: ${pip.datasource.password}
+          public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAM1UDKI2uNDHrtQlD1kvhf8VRN9iixIqEsT/iPZ/GwKRqaLhr24K8xFZ4Cb71dL/NzFR9ssM9iQhAlAdCQAv/ssCAwEAAQ==
+        # 从库数据源
+        sqlite:
+          url: jdbc:p6spy:sqlite:${sqlite.dbpath}?key=${sqlite.key}
+          driver-class-name: com.p6spy.engine.spy.P6SpyDriver
 logging:
   level: debug
   level.com.dalianpai: debug
