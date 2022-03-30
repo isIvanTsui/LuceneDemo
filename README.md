@@ -3,7 +3,7 @@
 ## 技术栈
 
 * `jdk8`、`maven3.8.1`
-* `SpringBoot2.6.4`、`6.6.0`、`Sqlite`
+* `SpringBoot2.6.4`、`Lucene6.6.0`、`Sqlite`
 
 ## 如何启动
 
