@@ -30,5 +30,4 @@ logging:
   level.com.dalianpai: debug
   file:
     path: logs:/
-server:
-  port: 10086
+
