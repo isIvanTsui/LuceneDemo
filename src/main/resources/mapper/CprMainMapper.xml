@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.medicom.search.mapper.CprMainMapper">
+<mapper namespace="com.ivan.search.mapper.CprMainMapper">
 
     <select id="listCpr" resultType="com.ivan.search.vo.CprVo">
         SELECT

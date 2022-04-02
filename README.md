@@ -14,6 +14,6 @@
 
 打开链接：http://localhost:8080/，开始访问
 
-输入关键字 “人参”即可进行全文检索了
+先点击“创建索引”，再开始搜索：
 
-![Lucene](https://raw.githubusercontent.com/isIvanTsui/img/master/Lucene.gif)
+![Lucene](https://raw.githubusercontent.com/isIvanTsui/img/master/img/Lucene.gif)
